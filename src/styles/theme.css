@@ -238,6 +238,11 @@
     letter-spacing: -1.2px;
   }
 
+  /* Figma H2 — one block per line; avoid word-break wrapping */
+  .text-h2-balanced {
+    text-wrap: balance;
+  }
+
   .text-h2 {
     font-family: var(--font-display);
     font-size: 56px;
@@ -325,6 +330,12 @@
     font-size: 36px;
     font-weight: 500;
     line-height: 1;
+  }
+
+  /* Hero dashboard terminal (monospace) */
+  .font-terminal {
+    font-family: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Monaco,
+      Consolas, "Liberation Mono", monospace;
   }
 
   /* Dashboard / terminal UI mocks (Figma uses Inter at small sizes) */

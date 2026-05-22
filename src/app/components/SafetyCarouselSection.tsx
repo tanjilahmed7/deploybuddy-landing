@@ -9,6 +9,7 @@ import imgCard3b from "../../imports/DeployBuddyLandingPage/0d9c525082c6e2d775f7
 import imgCard3c from "../../imports/DeployBuddyLandingPage/4b5acbf746da80235c9078c52f0f4a53bf01d1ec.png";
 import imgCard3d from "../../imports/DeployBuddyLandingPage/6de158f6e898059aae561a651b88202b10f84767.png";
 import svgPaths from "../../imports/DeployBuddyLandingPage/svg-ozithytiez";
+import { FIGMA_HEADLINES } from "../lib/figma-headlines";
 import ScrollRevealHeading from "./ScrollRevealHeading";
 import BlurRevealText from "./BlurRevealText";
 
@@ -209,8 +210,8 @@ export default function SafetyCarouselSection() {
     >
       <div className="flex items-end justify-between w-full mb-[80px]">
         <ScrollRevealHeading
-          className="text-h2 text-[#030813] w-[522px]"
-          text="Built with control and safety in mind."
+          className={`text-h2 text-[#030813] ${FIGMA_HEADLINES.safety.maxWidthClass}`}
+          lines={[...FIGMA_HEADLINES.safety.lines]}
         />
         <BlurRevealText
           className="text-body-2 text-[#030813] whitespace-nowrap"

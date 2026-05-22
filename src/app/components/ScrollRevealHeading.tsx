@@ -4,17 +4,21 @@ import ScrollReveal from "./react-bits/ScrollReveal";
 
 export type ScrollRevealHeadingProps = {
   className?: string;
-  /** Plain string lines (preferred for Scroll Reveal word split) */
+  /** Plain string lines — each renders as its own block (Figma line breaks). */
   lines?: string[];
-  /** Single string headline */
+  /** Single string headline (short titles only; prefer `lines` for H2). */
   text?: string;
-  /** Optional accent line class applied to second line when using `lines` */
+  /** Accent class for `accentLineIndex` when using `lines`. */
   accentLineClassName?: string;
-  /** Custom content when not using string lines (no scroll reveal — static only) */
+  accentLineIndex?: number;
   children?: ReactNode;
   baseOpacity?: number;
   darkBg?: boolean;
 };
+
+function stripBreakWord(className: string): string {
+  return className.replace(/\s*\[word-break:break-word\]\s*/g, " ").trim();
+}
 
 export default function ScrollRevealHeading({
   className = "",
@@ -22,20 +26,26 @@ export default function ScrollRevealHeading({
   text,
   children,
   accentLineClassName,
+  accentLineIndex = 1,
   baseOpacity,
   darkBg = false,
 }: ScrollRevealHeadingProps) {
   const prefersReducedMotion = useReducedMotion();
   const opacity = baseOpacity ?? (darkBg ? 0.25 : 0.15);
+  const rootClass = stripBreakWord(className);
 
   if (prefersReducedMotion) {
     if (lines?.length) {
       return (
-        <div className={className}>
+        <div className={rootClass}>
           {lines.map((line, i) => (
             <span
               key={line}
-              className={i === 1 && accentLineClassName ? accentLineClassName : "block"}
+              className={`block ${
+                i === accentLineIndex && accentLineClassName
+                  ? accentLineClassName
+                  : ""
+              }`}
             >
               {line}
             </span>
@@ -44,14 +54,14 @@ export default function ScrollRevealHeading({
       );
     }
     if (text) {
-      return <div className={className}>{text}</div>;
+      return <div className={rootClass}>{text}</div>;
     }
-    return <div className={className}>{children}</div>;
+    return <div className={rootClass}>{children}</div>;
   }
 
   if (lines?.length) {
     return (
-      <div className={className}>
+      <div className={rootClass}>
         {lines.map((line, i) => (
           <ScrollReveal
             key={line}
@@ -61,7 +71,7 @@ export default function ScrollRevealHeading({
             blurStrength={4}
             containerClassName="block"
             textClassName={
-              i === 1 && accentLineClassName
+              i === accentLineIndex && accentLineClassName
                 ? `block ${accentLineClassName}`
                 : "block"
             }
@@ -80,13 +90,13 @@ export default function ScrollRevealHeading({
         baseRotation={0}
         enableBlur
         blurStrength={4}
-        containerClassName={className}
-        textClassName=""
+        containerClassName={rootClass}
+        textClassName="block"
       >
         {text}
       </ScrollReveal>
     );
   }
 
-  return <div className={className}>{children}</div>;
+  return <div className={rootClass}>{children}</div>;
 }

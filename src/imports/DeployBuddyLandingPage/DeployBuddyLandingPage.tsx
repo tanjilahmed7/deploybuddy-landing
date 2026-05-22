@@ -5,6 +5,7 @@ import HowItWorksSection from "../../app/components/HowItWorksSection";
 import SafetyCarouselSection from "../../app/components/SafetyCarouselSection";
 import TeamCarouselSection from "../../app/components/TeamCarouselSection";
 import TeamsPinSection from "../../app/components/TeamsPinSection";
+import { FIGMA_HEADLINES } from "../../app/lib/figma-headlines";
 import ScrollRevealHeading from "../../app/components/ScrollRevealHeading";
 import BlurRevealText from "../../app/components/BlurRevealText";
 import HeroSplitTitle from "../../app/components/HeroSplitTitle";
@@ -496,7 +497,7 @@ export function SiteHeaderBar() {
 
 function Frame152() {
   return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[20px] items-center relative shrink-0 text-center w-full">
+    <div className="content-stretch flex flex-col gap-[20px] items-center relative shrink-0 text-center w-full max-w-[990px] mx-auto">
       <HeroSplitTitle />
       <div className="text-body-1 flex flex-col justify-center relative shrink-0 text-black w-full max-w-[786px]">
         <p className="leading-[1.3]">
@@ -1254,8 +1255,9 @@ function Frame80() {
 function Frame57() {
   return (
     <div className="content-stretch flex items-center relative shrink-0">
-      <p className="text-h2 [word-break:break-word] relative shrink-0 text-center text-white w-[857px]">
-        Everything you need to run WordPress on your own cloud.
+      <p className="text-h2 relative shrink-0 text-center text-white max-w-[857px] mx-auto w-full">
+        <span className="block">Everything you need to run</span>
+        <span className="block">WordPress on your own cloud.</span>
       </p>
     </div>
   );
@@ -1677,8 +1679,8 @@ function Frame81() {
 function Frame84() {
   return (
     <div className="content-stretch flex flex-col items-start relative shrink-0">
-      <p className="text-h2 [word-break:break-word] relative shrink-0 text-[#030813] w-[522px]">
-        Built with control and safety in mind.
+      <p className="text-h2 relative shrink-0 text-[#030813] max-w-[522px]">
+        <span className="block">Built with control and safety in mind.</span>
       </p>
     </div>
   );
@@ -1966,8 +1968,8 @@ function Frame83() {
 function Frame114() {
   return (
     <ScrollRevealHeading
-      className="text-h2 [word-break:break-word] relative shrink-0 text-white w-[777px]"
-      text="Designed for teams that deliver WordPress projects."
+      className={`text-h2 relative shrink-0 text-white ${FIGMA_HEADLINES.teamsSection.maxWidthClass}`}
+      lines={[...FIGMA_HEADLINES.teamsSection.lines]}
       darkBg
     />
   );
@@ -3427,8 +3429,10 @@ function Frame86() {
 function Frame117() {
   return (
     <ScrollRevealHeading
-      className="text-h2 [word-break:break-word] relative shrink-0 text-[#030813] text-center w-[884px]"
-      lines={["Managed hosting simplicity", "VPS-level control"]}
+      className={`text-h2 relative shrink-0 text-[#030813] text-center ${FIGMA_HEADLINES.useCases.maxWidthClass} mx-auto w-full`}
+      lines={[...FIGMA_HEADLINES.useCases.lines]}
+      accentLineIndex={FIGMA_HEADLINES.useCases.accentLineIndex}
+      accentLineClassName="text-[#1447e6]"
     />
   );
 }
@@ -5742,8 +5746,8 @@ function Frame34() {
   return (
     <div className="[word-break:break-word] content-stretch flex flex-col gap-[32px] items-center relative shrink-0 text-center w-[916px]">
       <ScrollRevealHeading
-        className="text-h2 leading-[1.1] text-[#1c1c1d] w-full"
-        text="Built for the teams that actually ship WordPress work."
+        className={`text-h2 leading-[1.1] text-[#1c1c1d] ${FIGMA_HEADLINES.teamsPin.maxWidthClass} mx-auto w-full text-center`}
+        lines={[...FIGMA_HEADLINES.teamsPin.lines]}
       />
       <BlurRevealText className="text-body-1 leading-[1.3] text-[#515152] w-full">
         Enjoy exciting offers, cashback deals, and special campaigns from Prime
@@ -5925,8 +5929,8 @@ function Frame15() {
 function Frame120() {
   return (
     <ScrollRevealHeading
-      className="text-h2 [word-break:break-word] relative shrink-0 text-center text-white w-[777px]"
-      text="Ready to manage WordPress servers?"
+      className={`text-h2 relative shrink-0 text-center text-white ${FIGMA_HEADLINES.newsletter.maxWidthClass} mx-auto w-full`}
+      lines={[...FIGMA_HEADLINES.newsletter.lines]}
       darkBg
     />
   );

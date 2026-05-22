@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import { FIGMA_HEADLINES } from "../lib/figma-headlines";
 import ScrollRevealHeading from "./ScrollRevealHeading";
 import BlurRevealText from "./BlurRevealText";
 import { FEATURES_SECTION_GRADIENT_CLASS } from "../lib/section-backgrounds";
@@ -248,8 +249,8 @@ export default function FeaturesSliderSection() {
       {/* ── Heading ──────────────────────────────────────────────── */}
       <div className="relative z-10 flex flex-col items-center gap-[18px] px-[240px] mb-[72px]">
         <ScrollRevealHeading
-          className="text-h2 text-center text-white w-[857px]"
-          text="Everything you need to run WordPress on your own cloud."
+          className={`text-h2 text-center text-white ${FIGMA_HEADLINES.features.maxWidthClass} mx-auto w-full`}
+          lines={[...FIGMA_HEADLINES.features.lines]}
           darkBg
         />
         <BlurRevealText className="text-body-2 text-center text-[#aaa] w-[789px]">

@@ -14,6 +14,7 @@ import {
   useReducedMotion,
 } from "motion/react";
 import ScrollRevealHeading from "./ScrollRevealHeading";
+import { FIGMA_HEADLINES } from "../lib/figma-headlines";
 import {
   HOW_IT_WORKS_THEME_VARS,
   HOW_IT_WORKS_THEMES,
@@ -407,10 +408,8 @@ export default function HowItWorksSection({
           >
             <ScrollRevealHeading
               className={`text-h2 ${theme.heading}`}
-              lines={[
-                "Do token to live WordPress in",
-                "under five minutes.",
-              ]}
+              lines={[...FIGMA_HEADLINES.howItWorks.lines]}
+              accentLineIndex={FIGMA_HEADLINES.howItWorks.accentLineIndex}
               accentLineClassName={theme.headingAccent}
               darkBg={theme.scrollRevealDarkBg}
             />

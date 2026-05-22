@@ -29,6 +29,10 @@ export type SplitTextProps = {
   /** Extra delay before this instance starts (e.g. second hero line) */
   startDelay?: number;
   onAnimationComplete?: () => void;
+  /** Applied to each split char (Figma per-glyph tracking when using chars split). */
+  letterSpacing?: string;
+  /** Called after split; use to set per-char color (e.g. hero accent). */
+  onCharsSplit?: (chars: HTMLElement[], text: string) => void;
 };
 
 export default function SplitText({
@@ -46,6 +50,8 @@ export default function SplitText({
   trigger = "mount",
   startDelay = 0,
   onAnimationComplete,
+  letterSpacing,
+  onCharsSplit,
 }: SplitTextProps) {
   const ref = useRef<HTMLElement>(null);
   const staggerSec = stagger ?? delay / 1000;
@@ -101,6 +107,23 @@ export default function SplitText({
         onSplit: (self: GSAPSplitText) => {
           assignTargets(self);
 
+          if (self.chars?.length) {
+            const chars = self.chars as HTMLElement[];
+            const parentColor = getComputedStyle(node).color;
+            chars.forEach((el) => {
+              if (letterSpacing) {
+                el.style.letterSpacing = letterSpacing;
+              }
+            });
+            if (onCharsSplit) {
+              onCharsSplit(chars, text);
+            } else if (parentColor) {
+              chars.forEach((el) => {
+                el.style.color = parentColor;
+              });
+            }
+          }
+
           const tweenVars: gsap.TweenVars = {
             ...to,
             duration,
@@ -149,6 +172,8 @@ export default function SplitText({
         startDelay,
         staggerSec,
         fontsLoaded,
+        letterSpacing,
+        onCharsSplit,
         JSON.stringify(from),
         JSON.stringify(to),
       ],

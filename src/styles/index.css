@@ -23,3 +23,38 @@ html.lenis body {
   display: inline-block;
   will-change: transform, opacity;
 }
+
+/* Figma H1 (76:255): Clash Display 76 / 500 / lh 1 / -1.2px tracking */
+.text-h1 .split-parent,
+.text-h1 .split-char {
+  font-family: var(--font-display);
+  font-size: 76px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -1.2px;
+}
+
+/* Hero H1 color spans — explicit on chars so GSAP split does not lose accent */
+.text-h1 .hero-h1--base.split-parent,
+.text-h1 .hero-h1--base .split-char {
+  color: #17171b;
+}
+
+.text-h1 .hero-h1--accent.split-parent,
+.text-h1 .hero-h1--accent .split-char {
+  color: #1447e6;
+}
+
+/* Word gap between GSAP split segments (trailing spaces collapse) */
+.text-h1 .hero-h1-word-gap {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 76px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -1.2px;
+  color: #17171b;
+  width: 0.15em;
+  overflow: visible;
+  white-space: pre;
+}
