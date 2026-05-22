@@ -8,6 +8,10 @@ import TeamsPinSection from "../../app/components/TeamsPinSection";
 import ScrollRevealHeading from "../../app/components/ScrollRevealHeading";
 import BlurRevealText from "../../app/components/BlurRevealText";
 import HeroSplitTitle from "../../app/components/HeroSplitTitle";
+import NewsletterSignup from "../../app/components/NewsletterSignup";
+import NavPullLink from "../../app/components/NavPullLink";
+import NavCTAButton from "../../app/components/NavCTAButton";
+import { NAV_LINKS, NAV_LOGIN_HREF, NAV_CTA_HREF } from "../../app/lib/nav-links";
 import { FOOTER_LINKS } from "../../app/lib/footer-links";
 import imgFrame2147224507 from "./090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
 import imgRectangle875 from "./0d9c525082c6e2d775f7cfb1534692c856e62eb2.png";
@@ -377,13 +381,16 @@ function Menu4() {
 
 function Frame54() {
   return (
-    <div className="content-stretch flex gap-[12px] items-center relative shrink-0">
-      <Menu />
-      <Menu1 />
-      <Menu2 />
-      <Menu3 />
-      <Menu4 />
-    </div>
+    <nav
+      aria-label="Main navigation"
+      className="content-stretch flex gap-[4px] items-center relative shrink-0"
+    >
+      {NAV_LINKS.map(({ href, label }) => (
+        <NavPullLink key={label} href={href}>
+          {label}
+        </NavPullLink>
+      ))}
+    </nav>
   );
 }
 
@@ -446,8 +453,13 @@ function Frame17() {
 function Frame56() {
   return (
     <div className="content-stretch flex gap-[16px] items-center relative shrink-0">
-      <Menu5 />
-      <Frame17 />
+      <NavPullLink
+        href={NAV_LOGIN_HREF}
+        textClassName="text-nav [word-break:break-word] relative shrink-0 text-[#17171b] whitespace-nowrap"
+      >
+        Log in
+      </NavPullLink>
+      <NavCTAButton href={NAV_CTA_HREF}>Start Free</NavCTAButton>
     </div>
   );
 }
@@ -455,30 +467,30 @@ function Frame56() {
 function Frame55() {
   return (
     <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-      <Frame151 />
+      <a
+        href="#top"
+        className="shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-[#1447e6] focus-visible:ring-offset-2 rounded-sm"
+        aria-label="DeployBuddy home"
+      >
+        <Frame151 />
+      </a>
       <Frame54 />
       <Frame56 />
     </div>
   );
 }
 
-function Nav() {
+/** Exported for fixed sticky header in App.tsx */
+export function SiteHeaderBar() {
   return (
-    <motion.div
-      className="backdrop-blur-[6px] h-[78px] relative shrink-0 w-full"
+    <div
+      className="h-[78px] relative shrink-0 w-full"
       data-name="Nav"
-      initial={{ opacity: 0, y: -24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div
-        aria-hidden="true"
-        className="absolute border-[#ececee] border-b border-solid inset-0 pointer-events-none"
-      />
       <div className="content-stretch flex flex-col items-start px-[80px] py-[14px] relative size-full">
         <Frame55 />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -575,7 +587,7 @@ function Frame155() {
 function Frame156() {
   return (
     <div className="content-stretch flex flex-col gap-[100px] items-center relative shrink-0 w-full max-w-[1920px] mx-auto">
-      <Nav />
+      <div className="h-[78px] w-full shrink-0" aria-hidden />
       <Frame155 />
     </div>
   );
@@ -1965,7 +1977,7 @@ function Frame113() {
   return (
     <div className="content-stretch flex items-end justify-between relative shrink-0 w-[1440px]">
       <Frame114 />
-      <BlurRevealText className="[word-break:break-word] font-['Geist:Regular',sans-serif] font-normal leading-[1.3] relative shrink-0 text-[16px] text-white w-[419px]">
+      <BlurRevealText className="text-body-2 [word-break:break-word] relative shrink-0 text-white w-[419px]">
         Launch your AI chatbot in minutes, not months, and start engaging
         customers immediately.
       </BlurRevealText>
@@ -5768,7 +5780,7 @@ function Frame5() {
         Protecting Yourself from Online Financial Scams in Web Development
       </p>
       <p
-        className="font-['Google_Sans_Flex:Regular',sans-serif] font-normal leading-[23px] relative shrink-0 text-[#5e5e6e] text-[16px] tracking-[0.08px] w-full"
+        className="text-body-2 [word-break:break-word] relative shrink-0 text-[#5e5e6e] tracking-[0.08px] w-full"
         style={{ fontVariationSettings: "'GRAD' 0, 'ROND' 0, 'wdth' 100" }}
       >{`10 Mins Read `}</p>
     </div>
@@ -5804,7 +5816,7 @@ function Frame6() {
         Development
       </p>
       <p
-        className="font-['Google_Sans_Flex:Regular',sans-serif] font-normal leading-[23px] relative shrink-0 text-[#5e5e6e] text-[16px] tracking-[0.08px] w-full"
+        className="text-body-2 [word-break:break-word] relative shrink-0 text-[#5e5e6e] tracking-[0.08px] w-full"
         style={{ fontVariationSettings: "'GRAD' 0, 'ROND' 0, 'wdth' 100" }}
       >{`10 Mins Read `}</p>
     </div>
@@ -5873,7 +5885,7 @@ function Frame11() {
         Development
       </p>
       <p
-        className="font-['Google_Sans_Flex:Regular',sans-serif] font-normal leading-[23px] relative shrink-0 text-[#5e5e6e] text-[16px] tracking-[0.08px] w-full"
+        className="text-body-2 [word-break:break-word] relative shrink-0 text-[#5e5e6e] tracking-[0.08px] w-full"
         style={{ fontVariationSettings: "'GRAD' 0, 'ROND' 0, 'wdth' 100" }}
       >{`10 Mins Read `}</p>
     </div>
@@ -6016,25 +6028,8 @@ function Frame124() {
   );
 }
 
-function Frame64() {
-  return (
-    <div className="flex h-[50px] w-[117px] shrink-0 items-center justify-center gap-[10px] rounded-[500px] bg-[#1447e6] px-[28px] py-[16px]">
-      <p className="text-btn [word-break:break-word] shrink-0 text-center capitalize text-white">
-        Join Now
-      </p>
-    </div>
-  );
-}
-
 function Frame60() {
-  return (
-    <div className="flex h-[60px] w-[322px] shrink-0 items-center gap-[30px] rounded-[90px] bg-[#17171b] py-[5px] pl-[20px] pr-[5px]">
-      <p className="text-body-2 flex h-[21px] w-[150px] shrink-0 items-center text-[#b3b3b3]">
-        Your mail here
-      </p>
-      <Frame64 />
-    </div>
-  );
+  return <NewsletterSignup />;
 }
 
 function Frame123() {
@@ -6460,7 +6455,7 @@ export default function DeployBuddyLandingPage() {
   return (
     <div
       id="top"
-      className="bg-white relative w-full min-w-0"
+      className="font-body bg-white relative w-full min-w-0"
       data-name="DeployBuddy Landing Page"
     >
       <Frame157 />

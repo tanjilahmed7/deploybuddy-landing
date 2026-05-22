@@ -1,2 +1,10 @@
-/* DeployBuddy landing page — Figma typefaces */
-@import url("https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500&family=Inter+Tight:wght@500&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500&display=swap");
+/* DeployBuddy — Figma: Clash Display (display) + Manrope (body) */
+
+/* Clash Display is not on Google Fonts; load from Fontshare (ITF). */
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap");
+
+/* Body + UI — Manrope (Figma Body 2, nav, buttons, cards). */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
+
+/* Dashboard / terminal mocks only (Figma Inter at small sizes). */
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Inter:wght@400;500;600;700&display=swap");

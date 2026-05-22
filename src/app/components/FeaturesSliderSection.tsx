@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import ScrollRevealHeading from "./ScrollRevealHeading";
 import BlurRevealText from "./BlurRevealText";
+import { FEATURES_SECTION_GRADIENT_CLASS } from "../lib/section-backgrounds";
 import img506 from "../../imports/DeployBuddyLandingPage/4f388580dbf5cd692c0d00c14113857295288703.png";
 import img507 from "../../imports/DeployBuddyLandingPage/090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
 import img508 from "../../imports/DeployBuddyLandingPage/51bf8bf67797c79c70b89bd52c569905a79aad5e.png";
@@ -234,7 +235,7 @@ export default function FeaturesSliderSection() {
   return (
     <section
       id="features"
-      className="relative bg-gradient-to-b from-black to-[#03125d] py-[140px] overflow-x-hidden scroll-mt-[78px]"
+      className={`relative ${FEATURES_SECTION_GRADIENT_CLASS} py-[140px] overflow-x-hidden scroll-mt-[78px]`}
       data-name="Frame 2147224488"
       data-node-id="76:478"
       onMouseEnter={() => setPaused(true)}

@@ -1,7 +1,11 @@
 import { useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
-import DeployBuddyLandingPage from "../imports/DeployBuddyLandingPage/DeployBuddyLandingPage";
+import DeployBuddyLandingPage, {
+  SiteHeaderBar,
+} from "../imports/DeployBuddyLandingPage/DeployBuddyLandingPage";
+import StickyHeader from "./components/StickyHeader";
+import { useScrollHeaderVisibility } from "./hooks/useScrollHeaderVisibility";
 import { debounce } from "./lib/debounce";
 
 const DESIGN_WIDTH = 1920;
@@ -13,6 +17,7 @@ export default function App() {
   const [scale, setScale] = useState(1);
   const [contentHeight, setContentHeight] = useState(0);
   const lenis = useLenis();
+  const headerVisible = useScrollHeaderVisibility();
 
   useEffect(() => {
     const updateScale = () => {
@@ -60,7 +65,11 @@ export default function App() {
   const scaledHeight = contentHeight * scale;
 
   return (
-    <div className="w-full overflow-x-hidden bg-white">
+    <>
+      <StickyHeader visible={headerVisible} scale={scale}>
+        <SiteHeaderBar />
+      </StickyHeader>
+      <div className="w-full overflow-x-hidden bg-white">
       <div
         className="relative mx-auto"
         style={{
@@ -83,5 +92,6 @@ export default function App() {
         </div>
       </div>
     </div>
+    </>
   );
 }

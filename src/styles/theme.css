@@ -81,6 +81,7 @@
 }
 
 @theme inline {
+  --font-sans: var(--font-body);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --color-background: var(--background);
@@ -139,6 +140,21 @@
 
   html {
     font-size: var(--font-size);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #root {
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
   }
 
   h1 {
@@ -165,6 +181,16 @@
     line-height: 1.5;
   }
 
+  p,
+  li,
+  label,
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
   label {
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
@@ -184,34 +210,14 @@
   }
 }
 
-/* How-it-works timeline connector: Deep Blue fill */
-@keyframes step-connector-fill {
-  from {
-    transform: scaleY(0);
-  }
-  to {
-    transform: scaleY(1);
-  }
-}
-
-.step-connector__track {
-  background-color: #c6c9d0;
-}
-
+/* How-it-works timeline: fill scale driven by JS (--segment progress) */
 .step-connector__fill {
   transform-origin: top center;
   background-color: #1447e6;
-  animation-name: step-connector-fill;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
 }
 
-.step-connector__fill--paused {
-  animation-play-state: paused;
-}
-
-.step-connector__fill--complete {
-  transform: scaleY(1);
+.step-connector-rail {
+  transition: flex-grow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ── Figma typography tokens (DeployBuddy Landing Page) ─────────────────── */
