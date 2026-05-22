@@ -3,6 +3,8 @@ import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/rea
 
 import imgImage3 from "../../imports/DeployBuddyLandingPage/313f5bd7015154f27e139a57456f469aa33c6c91.png";
 import imgImage33 from "../../imports/DeployBuddyLandingPage/2916c962228e4aaf7cd0c6ba3b62875f14bd4e0a.png";
+import ScrollRevealHeading from "./ScrollRevealHeading";
+import BlurRevealText from "./BlurRevealText";
 
 const AUTOPLAY_MS = 4000;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -51,6 +53,7 @@ export default function TeamCarouselSection() {
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const useScrollHeading = isInView && activeIndex === 0;
 
   const advance = useCallback(() => {
     setActiveIndex((i) => (i + 1) % TOTAL);
@@ -108,18 +111,26 @@ export default function TeamCarouselSection() {
           data-name="Heading 3"
           data-node-id="76:912"
         >
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={activeIndex}
+          {useScrollHeading ? (
+            <ScrollRevealHeading
               className="text-h2 [word-break:break-word] flex-[1_0_0] min-w-px relative text-white"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={prefersReducedMotion ? false : { opacity: 0, y: -12 }}
-              transition={{ duration: 0.4, ease: easeOut }}
-            >
-              {SLIDES[activeIndex].heading}
-            </motion.p>
-          </AnimatePresence>
+              text={SLIDES[0].heading}
+              darkBg
+            />
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={activeIndex}
+                className="text-h2 [word-break:break-word] flex-[1_0_0] min-w-px relative text-white"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={prefersReducedMotion ? false : { opacity: 0, y: -12 }}
+                transition={{ duration: 0.4, ease: easeOut }}
+              >
+                {SLIDES[activeIndex].heading}
+              </motion.p>
+            </AnimatePresence>
+          )}
         </div>
 
         {/* Description + indicator */}
@@ -128,18 +139,24 @@ export default function TeamCarouselSection() {
           data-name="Container"
           data-node-id="76:914"
         >
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={activeIndex}
-              className="text-title-2 [word-break:break-word] min-w-full relative shrink-0 text-white w-[min-content]"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
-              transition={{ duration: 0.4, delay: 0.05, ease: easeOut }}
-            >
-              {SLIDES[activeIndex].description}
-            </motion.p>
-          </AnimatePresence>
+          {useScrollHeading ? (
+            <BlurRevealText className="text-title-2 [word-break:break-word] min-w-full relative shrink-0 text-white w-[min-content]">
+              {SLIDES[0].description}
+            </BlurRevealText>
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={activeIndex}
+                className="text-title-2 [word-break:break-word] min-w-full relative shrink-0 text-white w-[min-content]"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.4, delay: 0.05, ease: easeOut }}
+              >
+                {SLIDES[activeIndex].description}
+              </motion.p>
+            </AnimatePresence>
+          )}
 
           {/* Indicator — matches Figma Line 18-22 widths and colors */}
           <div className="flex items-center" style={{ gap: GAP }}>

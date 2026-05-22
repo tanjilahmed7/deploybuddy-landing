@@ -5,6 +5,9 @@ import HowItWorksSection from "../../app/components/HowItWorksSection";
 import SafetyCarouselSection from "../../app/components/SafetyCarouselSection";
 import TeamCarouselSection from "../../app/components/TeamCarouselSection";
 import TeamsPinSection from "../../app/components/TeamsPinSection";
+import ScrollRevealHeading from "../../app/components/ScrollRevealHeading";
+import BlurRevealText from "../../app/components/BlurRevealText";
+import HeroSplitTitle from "../../app/components/HeroSplitTitle";
 import { FOOTER_LINKS } from "../../app/lib/footer-links";
 import imgFrame2147224507 from "./090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
 import imgRectangle875 from "./0d9c525082c6e2d775f7cfb1534692c856e62eb2.png";
@@ -481,11 +484,8 @@ function Nav() {
 
 function Frame152() {
   return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[20px] items-center leading-[0] relative shrink-0 text-center w-full">
-      <p className="text-h1 min-w-full relative shrink-0 text-[#17171b] w-[min-content]">
-        <span>{`Manage WordPress servers `}</span>
-        <span className="text-[#1447e6]">without SSH.</span>
-      </p>
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[20px] items-center relative shrink-0 text-center w-full">
+      <HeroSplitTitle />
       <div className="text-body-1 flex flex-col justify-center relative shrink-0 text-black w-full max-w-[786px]">
         <p className="leading-[1.3]">
           Connect DigitalOcean, set up a server, deploy WordPress, manage files,
@@ -542,9 +542,9 @@ function Frame153() {
       className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full max-w-[990px]"
       variants={stagger}
     >
-      <motion.div variants={fadeUp} className="w-full">
+      <div className="w-full">
         <Frame152 />
-      </motion.div>
+      </div>
       <motion.div variants={fadeUp}>
         <Frame19 />
       </motion.div>
@@ -1953,11 +1953,11 @@ function Frame83() {
 
 function Frame114() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0">
-      <p className="text-h2 [word-break:break-word] relative shrink-0 text-white w-[777px]">
-        Designed for teams that deliver WordPress projects.
-      </p>
-    </div>
+    <ScrollRevealHeading
+      className="text-h2 [word-break:break-word] relative shrink-0 text-white w-[777px]"
+      text="Designed for teams that deliver WordPress projects."
+      darkBg
+    />
   );
 }
 
@@ -1965,10 +1965,10 @@ function Frame113() {
   return (
     <div className="content-stretch flex items-end justify-between relative shrink-0 w-[1440px]">
       <Frame114 />
-      <p className="[word-break:break-word] font-['Geist:Regular',sans-serif] font-normal leading-[1.3] relative shrink-0 text-[16px] text-white w-[419px]">
+      <BlurRevealText className="[word-break:break-word] font-['Geist:Regular',sans-serif] font-normal leading-[1.3] relative shrink-0 text-[16px] text-white w-[419px]">
         Launch your AI chatbot in minutes, not months, and start engaging
         customers immediately.
-      </p>
+      </BlurRevealText>
     </div>
   );
 }
@@ -3414,24 +3414,19 @@ function Frame86() {
 
 function Frame117() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0">
-      <p className="text-h2 [word-break:break-word] relative shrink-0 text-[#030813] text-center w-[884px]">
-        Managed hosting simplicity
-        <br aria-hidden="true" />
-        VPS-level control
-      </p>
-    </div>
+    <ScrollRevealHeading
+      className="text-h2 [word-break:break-word] relative shrink-0 text-[#030813] text-center w-[884px]"
+      lines={["Managed hosting simplicity", "VPS-level control"]}
+    />
   );
 }
 
 function Frame172() {
   return (
-    <div className="content-stretch flex flex-col items-start justify-center relative shrink-0">
-      <p className="text-body-2 [word-break:break-word] relative shrink-0 text-[#030813] whitespace-nowrap">
-        You stay in control of your servers. DeployBuddy helps you manage them
-        safely.
-      </p>
-    </div>
+    <BlurRevealText className="text-body-2 [word-break:break-word] relative shrink-0 text-[#030813] whitespace-nowrap">
+      You stay in control of your servers. DeployBuddy helps you manage them
+      safely.
+    </BlurRevealText>
   );
 }
 
@@ -5574,21 +5569,23 @@ function Container90() {
 
 function Frame115() {
   return (
-    <motion.div
+    <div
       id="hosting"
       className="bg-white content-stretch flex flex-col gap-[80px] items-center px-[240px] py-[140px] relative shrink-0 w-full max-w-[1920px] mx-auto scroll-mt-[78px]"
-      variants={stagger}
-      initial="hidden"
-      whileInView="show"
-      viewport={VIEWPORT_ONCE}
     >
-      <motion.div variants={fadeUp} className="w-full flex flex-col items-center">
+      <div className="w-full flex flex-col items-center">
         <Frame116 />
-      </motion.div>
-      <motion.div variants={fadeUp} className="w-full">
+      </div>
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT_ONCE}
+        className="w-full"
+      >
         <Container90 />
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -5731,18 +5728,15 @@ function Section() {
 
 function Frame34() {
   return (
-    <div className="[word-break:break-word] content-stretch flex flex-col gap-[32px] items-center leading-[0] relative shrink-0 text-center w-[916px]">
-      <div className="text-h2 flex flex-col justify-center relative shrink-0 text-[#1c1c1d] w-full">
-        <p className="leading-[1.1]">
-          Built for the teams that actually ship WordPress work.
-        </p>
-      </div>
-      <div className="text-body-1 flex flex-col justify-center relative shrink-0 text-[#515152] w-full">
-        <p className="leading-[1.3]">
-          Enjoy exciting offers, cashback deals, and special campaigns from
-          Prime Bank Fintech Limited—designed to help you save more every day.
-        </p>
-      </div>
+    <div className="[word-break:break-word] content-stretch flex flex-col gap-[32px] items-center relative shrink-0 text-center w-[916px]">
+      <ScrollRevealHeading
+        className="text-h2 leading-[1.1] text-[#1c1c1d] w-full"
+        text="Built for the teams that actually ship WordPress work."
+      />
+      <BlurRevealText className="text-body-1 leading-[1.3] text-[#515152] w-full">
+        Enjoy exciting offers, cashback deals, and special campaigns from Prime
+        Bank Fintech Limited—designed to help you save more every day.
+      </BlurRevealText>
     </div>
   );
 }
@@ -5918,11 +5912,11 @@ function Frame15() {
 
 function Frame120() {
   return (
-    <div className="content-stretch flex flex-col items-start relative shrink-0">
-      <p className="text-h2 [word-break:break-word] relative shrink-0 text-center text-white w-[777px]">
-        Ready to manage WordPress servers?
-      </p>
-    </div>
+    <ScrollRevealHeading
+      className="text-h2 [word-break:break-word] relative shrink-0 text-center text-white w-[777px]"
+      text="Ready to manage WordPress servers?"
+      darkBg
+    />
   );
 }
 
@@ -5930,10 +5924,10 @@ function Frame174() {
   return (
     <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0">
       <Frame120 />
-      <p className="text-body-2 [word-break:break-word] relative shrink-0 text-center text-white w-[419px]">
+      <BlurRevealText className="text-body-2 [word-break:break-word] relative shrink-0 text-center text-white w-[419px]">
         Connect DigitalOcean, launch your first server, and run every WordPress
         site on it from one dashboard.
-      </p>
+      </BlurRevealText>
     </div>
   );
 }
@@ -5979,16 +5973,17 @@ function Frame20() {
 
 function Frame119() {
   return (
-    <motion.div
-      className="content-stretch flex flex-col gap-[80px] items-center relative shrink-0 w-[1440px]"
-      variants={scaleIn}
-      initial="hidden"
-      whileInView="show"
-      viewport={VIEWPORT_ONCE}
-    >
+    <div className="content-stretch flex flex-col gap-[80px] items-center relative shrink-0 w-[1440px]">
       <Frame174 />
-      <Frame20 />
-    </motion.div>
+      <motion.div
+        variants={scaleIn}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT_ONCE}
+      >
+        <Frame20 />
+      </motion.div>
+    </div>
   );
 }
 

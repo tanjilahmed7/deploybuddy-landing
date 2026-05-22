@@ -13,3 +13,13 @@ html.lenis body {
 .pin-spacer:has(.teams-pin-pin-wrap) {
   background-color: #030813 !important;
 }
+
+/* React Bits Split Text — hero char reveal */
+.split-parent {
+  overflow: hidden;
+}
+.split-char,
+.split-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}

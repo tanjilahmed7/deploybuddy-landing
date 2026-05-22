@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ReactLenis } from "lenis/react";
 import { useGsapLenis } from "../hooks/useGsapLenis";
+import { useScrollRevealRefresh } from "../hooks/useScrollRevealRefresh";
 
 const LENIS_OPTIONS = {
   autoRaf: false,
@@ -21,6 +22,7 @@ type LenisRootProps = {
 
 function LenisScrollBridge() {
   useGsapLenis();
+  useScrollRevealRefresh();
   return null;
 }
 

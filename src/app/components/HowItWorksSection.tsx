@@ -6,6 +6,7 @@ import {
   useReducedMotion,
 } from "motion/react";
 import howItWorksPreview from "../../imports/DeployBuddyLandingPage/how-it-works-preview.png";
+import ScrollRevealHeading from "./ScrollRevealHeading";
 
 const STEPS = [
   {
@@ -249,15 +250,14 @@ export default function HowItWorksSection() {
             className="flex w-full max-w-[588px] shrink-0 flex-col items-start gap-[80px]"
             data-node-id="76:451"
           >
-            <motion.h2
+            <ScrollRevealHeading
               className="text-h2 text-[#141414]"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, ease: easeOut }}
-            >
-              <span className="block">Do token to live WordPress in </span>
-              <span className="block text-[#1447e6]">under five minutes.</span>
-            </motion.h2>
+              lines={[
+                "Do token to live WordPress in",
+                "under five minutes.",
+              ]}
+              accentLineClassName="text-[#1447e6]"
+            />
 
             <div
               className="steps grid w-full max-w-[526px] items-stretch"

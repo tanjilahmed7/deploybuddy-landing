@@ -1,9 +1,7 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useGSAP } from "@gsap/react";
-import { motion } from "motion/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { fadeUp, VIEWPORT_ONCE } from "../lib/motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -228,15 +226,9 @@ export default function TeamsPinSection({
       className="teams-pin-section bg-[#030813] flex flex-col gap-[80px] items-start px-[240px] py-[140px] relative shrink-0 w-full max-w-[1920px] mx-auto scroll-mt-[78px]"
       data-node-id="76:540"
     >
-      <motion.div
-        className="relative z-10 w-full max-w-[1440px] shrink-0"
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={VIEWPORT_ONCE}
-      >
+      <div className="relative z-10 w-full max-w-[1440px] shrink-0">
         {header}
-      </motion.div>
+      </div>
 
       <div
         ref={pinWrapRef}
