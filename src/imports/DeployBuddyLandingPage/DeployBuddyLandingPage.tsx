@@ -35,6 +35,8 @@ import imgFooterIcon01 from "./footer-icon-01.svg";
 import imgFooterIcon02 from "./footer-icon-02.svg";
 import imgFooterIcon03 from "./footer-icon-03.svg";
 import svgPaths from "./svg-ozithytiez";
+import { motion } from "motion/react";
+import { fadeUp, scaleIn, stagger, VIEWPORT_ONCE } from "../../app/lib/motion";
 
 function Frame() {
   return (
@@ -459,9 +461,12 @@ function Frame55() {
 
 function Nav() {
   return (
-    <div
+    <motion.div
       className="backdrop-blur-[6px] h-[78px] relative shrink-0 w-full"
       data-name="Nav"
+      initial={{ opacity: 0, y: -24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <div
         aria-hidden="true"
@@ -470,7 +475,7 @@ function Nav() {
       <div className="content-stretch flex flex-col items-start px-[80px] py-[14px] relative size-full">
         <Frame55 />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -533,10 +538,17 @@ function Frame19() {
 
 function Frame153() {
   return (
-    <div className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full max-w-[990px]">
-      <Frame152 />
-      <Frame19 />
-    </div>
+    <motion.div
+      className="content-stretch flex flex-col gap-[40px] items-center relative shrink-0 w-full max-w-[990px]"
+      variants={stagger}
+    >
+      <motion.div variants={fadeUp} className="w-full">
+        <Frame152 />
+      </motion.div>
+      <motion.div variants={fadeUp}>
+        <Frame19 />
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -546,10 +558,17 @@ function Frame154() {
 
 function Frame155() {
   return (
-    <div className="content-stretch flex flex-col gap-[80px] items-center relative shrink-0 w-full max-w-[1442px] mx-auto px-[80px]">
+    <motion.div
+      className="content-stretch flex flex-col gap-[80px] items-center relative shrink-0 w-full max-w-[1442px] mx-auto px-[80px]"
+      variants={stagger}
+      initial="hidden"
+      animate="show"
+    >
       <Frame153 />
-      <Frame154 />
-    </div>
+      <motion.div variants={scaleIn} className="w-full flex justify-center">
+        <Frame154 />
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -1172,10 +1191,14 @@ function Frame51() {
 
 function Group1() {
   return (
-    <div
+    <motion.div
       className="relative w-full max-w-[1440px] mx-auto overflow-hidden"
       data-name="Group 134"
       data-node-id="76:387"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={VIEWPORT_ONCE}
     >
       <div className="overflow-hidden">
         <div
@@ -1195,7 +1218,7 @@ function Group1() {
       </div>
       <div className="pointer-events-none absolute inset-y-0 left-0 w-[152px] bg-gradient-to-r from-white to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-[152px] bg-gradient-to-l from-white to-transparent" />
-    </div>
+    </motion.div>
   );
 }
 
@@ -5551,13 +5574,21 @@ function Container90() {
 
 function Frame115() {
   return (
-    <div
+    <motion.div
       id="hosting"
       className="bg-white content-stretch flex flex-col gap-[80px] items-center px-[240px] py-[140px] relative shrink-0 w-full max-w-[1920px] mx-auto scroll-mt-[78px]"
+      variants={stagger}
+      initial="hidden"
+      whileInView="show"
+      viewport={VIEWPORT_ONCE}
     >
-      <Frame116 />
-      <Container90 />
-    </div>
+      <motion.div variants={fadeUp} className="w-full flex flex-col items-center">
+        <Frame116 />
+      </motion.div>
+      <motion.div variants={fadeUp} className="w-full">
+        <Container90 />
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -5948,10 +5979,16 @@ function Frame20() {
 
 function Frame119() {
   return (
-    <div className="content-stretch flex flex-col gap-[80px] items-center relative shrink-0 w-[1440px]">
+    <motion.div
+      className="content-stretch flex flex-col gap-[80px] items-center relative shrink-0 w-[1440px]"
+      variants={scaleIn}
+      initial="hidden"
+      whileInView="show"
+      viewport={VIEWPORT_ONCE}
+    >
       <Frame174 />
       <Frame20 />
-    </div>
+    </motion.div>
   );
 }
 
@@ -6384,13 +6421,17 @@ function Frame121() {
 
 function Footer() {
   return (
-    <div
+    <motion.div
       className="relative mx-auto h-[1198px] w-full max-w-[1920px] shrink-0 overflow-hidden bg-gradient-to-b from-black to-[#03125d]"
       data-name="Footer"
       data-node-id="76:959"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={VIEWPORT_ONCE}
     >
       <Frame121 />
-    </div>
+    </motion.div>
   );
 }
 

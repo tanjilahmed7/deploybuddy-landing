@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { motion } from "motion/react";
 
+import { fadeUp, VIEWPORT_ONCE } from "../lib/motion";
 import img506 from "../../imports/DeployBuddyLandingPage/4f388580dbf5cd692c0d00c14113857295288703.png";
 import img507 from "../../imports/DeployBuddyLandingPage/090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
 import img508 from "../../imports/DeployBuddyLandingPage/51bf8bf67797c79c70b89bd52c569905a79aad5e.png";
@@ -243,7 +245,13 @@ export default function FeaturesSliderSection() {
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[140px] bg-gradient-to-l from-[#03125d] to-transparent" />
 
       {/* ── Heading ──────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-col items-center gap-[18px] px-[240px] mb-[72px]">
+      <motion.div
+        className="relative z-10 flex flex-col items-center gap-[18px] px-[240px] mb-[72px]"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT_ONCE}
+      >
         <h2 className="text-h2 text-center text-white w-[857px]">
           Everything you need to run WordPress on your own cloud.
         </h2>
@@ -251,7 +259,7 @@ export default function FeaturesSliderSection() {
           Replace the SSH&nbsp;+&nbsp;FTP&nbsp;+&nbsp;cPanel&nbsp;+&nbsp;spreadsheet
           stack with one focused control panel.
         </p>
-      </div>
+      </motion.div>
 
       {/* ── Top row — right to left, 32s ─────────────────────────── */}
       <MarqueeRow
