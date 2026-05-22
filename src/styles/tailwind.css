@@ -1,0 +1,31 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+
+@import 'tw-animate-css';
+
+/* ── Infinite marquee keyframes ───────────────────────────── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Mobile: disable animation, fall back to touch-scroll */
+@media (max-width: 768px) {
+  .marquee-track {
+    animation: none !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .marquee-card {
+    scroll-snap-align: start;
+    margin-right: 16px !important;
+  }
+}
