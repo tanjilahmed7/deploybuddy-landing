@@ -1,11 +1,15 @@
 import { useLenis } from "lenis/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import DeployBuddyLandingPage from "../imports/DeployBuddyLandingPage/DeployBuddyLandingPage";
+import { debounce } from "./lib/debounce";
 
 const DESIGN_WIDTH = 1920;
+const HEIGHT_RESIZE_THRESHOLD = 32;
 
 export default function App() {
   const contentRef = useRef<HTMLDivElement>(null);
+  const lastHeightRef = useRef(0);
   const [scale, setScale] = useState(1);
   const [contentHeight, setContentHeight] = useState(0);
   const lenis = useLenis();
@@ -25,9 +29,13 @@ export default function App() {
     if (!element) return;
 
     const observer = new ResizeObserver(([entry]) => {
-      setContentHeight(
-        entry.borderBoxSize?.[0]?.blockSize ?? entry.contentRect.height,
-      );
+      const height =
+        entry.borderBoxSize?.[0]?.blockSize ?? entry.contentRect.height;
+      if (Math.abs(height - lastHeightRef.current) < HEIGHT_RESIZE_THRESHOLD) {
+        return;
+      }
+      lastHeightRef.current = height;
+      setContentHeight(height);
     });
 
     observer.observe(element);
@@ -36,8 +44,15 @@ export default function App() {
 
   useEffect(() => {
     if (!lenis) return;
-    const id = requestAnimationFrame(() => lenis.resize());
-    return () => cancelAnimationFrame(id);
+
+    const resizeLenis = debounce(() => {
+      lenis.resize();
+      requestAnimationFrame(() => ScrollTrigger.refresh(true));
+    }, 250);
+
+    resizeLenis();
+
+    return () => resizeLenis.cancel();
   }, [lenis, contentHeight, scale]);
 
   const isScaled = scale < 1;
@@ -61,6 +76,7 @@ export default function App() {
             width: DESIGN_WIDTH,
             transform: isScaled ? `scale(${scale})` : undefined,
             transformOrigin: "top left",
+            willChange: isScaled ? "transform" : undefined,
           }}
         >
           <DeployBuddyLandingPage />

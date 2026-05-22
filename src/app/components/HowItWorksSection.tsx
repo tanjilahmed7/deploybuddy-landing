@@ -201,7 +201,11 @@ function TimelineStep({
 
 export default function HowItWorksSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { amount: 0.35, once: false });
+  const isInView = useInView(sectionRef, {
+    amount: 0.2,
+    once: true,
+    margin: "0px 0px -8% 0px",
+  });
   const prefersReducedMotion = useReducedMotion();
   const [activeStep, setActiveStep] = useState(0);
   const [isPaused, setIsPaused] = useState(false);

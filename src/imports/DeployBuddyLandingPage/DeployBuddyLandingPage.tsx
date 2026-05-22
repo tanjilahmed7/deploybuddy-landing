@@ -4,6 +4,7 @@ import HeroPrimaryVisual from "../../app/components/HeroPrimaryVisual";
 import HowItWorksSection from "../../app/components/HowItWorksSection";
 import SafetyCarouselSection from "../../app/components/SafetyCarouselSection";
 import TeamCarouselSection from "../../app/components/TeamCarouselSection";
+import TeamsPinSection from "../../app/components/TeamsPinSection";
 import { FOOTER_LINKS } from "../../app/lib/footer-links";
 import imgFrame2147224507 from "./090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
 import imgRectangle875 from "./0d9c525082c6e2d775f7cfb1534692c856e62eb2.png";
@@ -1179,7 +1180,6 @@ function Group1() {
       <div className="overflow-hidden">
         <div
           className="marquee-track flex w-max will-change-transform hover:[animation-play-state:paused]"
-          data-lenis-prevent
           style={{
             animationName: "marquee-left",
             animationDuration: "40s",
@@ -3372,13 +3372,20 @@ function Container35() {
 
 function Frame86() {
   return (
-    <div
-      id="use-cases"
-      className="bg-[#030813] content-stretch flex flex-col gap-[80px] items-start px-[240px] py-[140px] relative shrink-0 w-full max-w-[1920px] mx-auto scroll-mt-[78px]"
-    >
-      <Frame113 />
-      <Container35 />
-    </div>
+    <TeamsPinSection
+      header={<Frame113 />}
+      card1={
+        <div className="relative h-[445px] w-full overflow-clip rounded-[16px] bg-[#161e31] p-[10px]">
+          <Frame169 />
+        </div>
+      }
+      card2={
+        <div className="flex w-full gap-[12px]">
+          <Container54 />
+          <Container70 />
+        </div>
+      }
+    />
   );
 }
 

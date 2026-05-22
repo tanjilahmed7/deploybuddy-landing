@@ -129,7 +129,11 @@ function Card3() {
 
 export default function SafetyCarouselSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { amount: 0.25, once: true });
+  const isInView = useInView(sectionRef, {
+    amount: 0.2,
+    once: true,
+    margin: "0px 0px -8% 0px",
+  });
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -224,7 +228,6 @@ export default function SafetyCarouselSection() {
         <div
           ref={emblaRef}
           className="overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y select-none"
-          data-lenis-prevent
           style={{ height: 533 }}
           data-node-id="76:547"
           aria-roledescription="carousel"

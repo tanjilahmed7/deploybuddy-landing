@@ -201,7 +201,6 @@ function MarqueeRow({
     <div className="relative py-[28px] overflow-visible">
       <div
         className="marquee-track flex will-change-transform"
-        data-lenis-prevent
         style={{
           animationName:
             direction === "left" ? "marquee-left" : "marquee-right",

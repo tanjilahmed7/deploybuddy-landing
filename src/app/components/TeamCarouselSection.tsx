@@ -43,7 +43,11 @@ const GAP = 8;
 
 export default function TeamCarouselSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { amount: 0.3, once: false });
+  const isInView = useInView(sectionRef, {
+    amount: 0.2,
+    once: true,
+    margin: "0px 0px -8% 0px",
+  });
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);

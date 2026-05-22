@@ -1,3 +1,15 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+/* Keep Lenis scroll smooth when sections change height (e.g. How It Works steps) */
+html.lenis,
+html.lenis body {
+  overflow-anchor: none;
+}
+
+/* GSAP wraps pinned content in .pin-spacer (parent) — match section bg so no white gap */
+.teams-pin-section .pin-spacer,
+.pin-spacer:has(.teams-pin-pin-wrap) {
+  background-color: #030813 !important;
+}
