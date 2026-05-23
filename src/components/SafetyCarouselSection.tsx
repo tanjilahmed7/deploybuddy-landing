@@ -2,16 +2,17 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 
-import imgCard1 from "../../imports/DeployBuddyLandingPage/a329e092dcdf5e6fe3a7c8c8bad0301f7c484b87.png";
-import imgCard2 from "../../imports/DeployBuddyLandingPage/9a924853e95ea3bd17fe860f989588821d532401.png";
-import imgCard3a from "../../imports/DeployBuddyLandingPage/ece298d0ec2c16f10310d45724b276a6035cb503.png";
-import imgCard3b from "../../imports/DeployBuddyLandingPage/0d9c525082c6e2d775f7cfb1534692c856e62eb2.png";
-import imgCard3c from "../../imports/DeployBuddyLandingPage/4b5acbf746da80235c9078c52f0f4a53bf01d1ec.png";
-import imgCard3d from "../../imports/DeployBuddyLandingPage/6de158f6e898059aae561a651b88202b10f84767.png";
-import svgPaths from "../../imports/DeployBuddyLandingPage/svg-ozithytiez";
+import imgCard1 from "../imports/DeployBuddyLandingPage/a329e092dcdf5e6fe3a7c8c8bad0301f7c484b87.png";
+import imgCard2 from "../imports/DeployBuddyLandingPage/9a924853e95ea3bd17fe860f989588821d532401.png";
+import imgCard3a from "../imports/DeployBuddyLandingPage/ece298d0ec2c16f10310d45724b276a6035cb503.png";
+import imgCard3b from "../imports/DeployBuddyLandingPage/0d9c525082c6e2d775f7cfb1534692c856e62eb2.png";
+import imgCard3c from "../imports/DeployBuddyLandingPage/4b5acbf746da80235c9078c52f0f4a53bf01d1ec.png";
+import imgCard3d from "../imports/DeployBuddyLandingPage/6de158f6e898059aae561a651b88202b10f84767.png";
+import svgPaths from "../imports/DeployBuddyLandingPage/svg-ozithytiez";
 import { FIGMA_HEADLINES } from "../lib/figma-headlines";
 import ScrollRevealHeading from "./ScrollRevealHeading";
 import BlurRevealText from "./BlurRevealText";
+import { imgSrc } from "@/lib/img-src";
 
 const CARD_W = 669;
 const CARD_GAP = 25;
@@ -46,7 +47,7 @@ function Card1() {
           <img
             alt=""
             className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-            src={imgCard1}
+            src={imgSrc(imgCard1)}
           />
         </div>
       </div>
@@ -90,7 +91,7 @@ function Card2() {
               <img
                 alt=""
                 className="absolute h-[150.02%] left-0 max-w-none top-[0.06%] w-full"
-                src={imgCard2}
+                src={imgSrc(imgCard2)}
               />
             </div>
           </div>
@@ -117,10 +118,10 @@ function Card3() {
         </div>
         <div className="relative shrink-0" style={{ width: 285.333, height: 214 }}>
           <div aria-hidden className="absolute inset-0 pointer-events-none">
-            <img alt="" className="absolute max-w-none object-cover size-full" src={imgCard3a} />
-            <img alt="" className="absolute max-w-none object-cover size-full" src={imgCard3b} />
-            <img alt="" className="absolute max-w-none object-cover size-full" src={imgCard3c} />
-            <img alt="" className="absolute max-w-none object-cover size-full" src={imgCard3d} />
+            <img alt="" className="absolute max-w-none object-cover size-full" src={imgSrc(imgCard3a)} />
+            <img alt="" className="absolute max-w-none object-cover size-full" src={imgSrc(imgCard3b)} />
+            <img alt="" className="absolute max-w-none object-cover size-full" src={imgSrc(imgCard3c)} />
+            <img alt="" className="absolute max-w-none object-cover size-full" src={imgSrc(imgCard3d)} />
           </div>
         </div>
       </div>
@@ -224,7 +225,7 @@ export default function SafetyCarouselSection() {
 
       <motion.div
         className="flex flex-col gap-[80px]"
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 40 }}
+        initial={prefersReducedMotion ? undefined : { opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
       >

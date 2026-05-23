@@ -73,7 +73,6 @@ const STEPS = [
 ] as const;
 
 const AUTO_ADVANCE_MS = 4500;
-const CONNECTOR_TRACK = "#c6c9d0";
 const CIRCLE_SIZE = 60;
 const STEPS_GAP = 30;
 const CONTENT_GAP = 20;
@@ -122,13 +121,16 @@ type StepConnectorProps = {
   isActive: boolean;
   segmentProgress: number;
   prefersReducedMotion: boolean | null;
+  theme: HowItWorksTheme;
 };
 
+/** Figma `76:468` / `how-it-works-connector.svg`: 1px stroked lines, not filled rects. */
 function StepConnector({
   isCompleted,
   isActive,
   segmentProgress,
   prefersReducedMotion,
+  theme,
 }: StepConnectorProps) {
   const fillScale = isCompleted
     ? 1
@@ -139,28 +141,43 @@ function StepConnector({
       : 0;
 
   const showFill = fillScale > 0;
+  const fillEnd = 100 * fillScale;
 
   return (
     <div
-      className="step-connector-rail relative min-h-0 w-[1.5px] flex-1 shrink-0"
+      className="step-connector-rail relative min-h-0 w-px flex-1 shrink-0 border-0"
       style={{
         marginBottom: -STEPS_GAP,
         paddingBottom: STEPS_GAP,
-        backgroundColor: CONNECTOR_TRACK,
       }}
       aria-hidden
     >
-      {showFill && (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div
-            className="step-connector__fill size-full will-change-transform"
-            style={{
-              transform: `scaleY(${fillScale})`,
-              transformOrigin: "top center",
-            }}
+      <svg
+        className="pointer-events-none absolute inset-0 size-full"
+        viewBox="0 0 1 100"
+        preserveAspectRatio="none"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="0.5"
+          y1="0"
+          x2="0.5"
+          y2="100"
+          stroke={theme.connectorTrack}
+          vectorEffect="non-scaling-stroke"
+        />
+        {showFill && (
+          <line
+            x1="0.5"
+            y1="0"
+            x2="0.5"
+            y2={fillEnd}
+            stroke={theme.connectorFill}
+            vectorEffect="non-scaling-stroke"
           />
-        </div>
-      )}
+        )}
+      </svg>
     </div>
   );
 }
@@ -225,6 +242,7 @@ const TimelineStep = memo(function TimelineStep({
             isActive={isActive}
             segmentProgress={segmentProgress}
             prefersReducedMotion={prefersReducedMotion}
+            theme={theme}
           />
         )}
       </div>
@@ -267,7 +285,7 @@ const TimelineStep = memo(function TimelineStep({
               <motion.p
                 key={`desc-${step.id}`}
                 className={`text-body-2 leading-[1.35] ${theme.stepDescription}`}
-                initial={prefersReducedMotion ? false : { opacity: 0 }}
+                initial={prefersReducedMotion ? undefined : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={prefersReducedMotion ? undefined : { opacity: 0 }}
                 transition={fadeTransition}
@@ -450,7 +468,7 @@ export default function HowItWorksSection({
           <motion.div
             className="relative h-[min(770px,60vw)] w-full max-w-[970px] shrink-0 overflow-hidden rounded-bl-[16px] rounded-tl-[16px] bg-[#e8f0ff] lg:h-[770px] lg:w-[970px]"
             data-node-id="76:476"
-            initial={prefersReducedMotion ? false : { opacity: 0, x: 40 }}
+            initial={prefersReducedMotion ? undefined : { opacity: 0, x: 40 }}
             animate={isRevealInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.15, ease: easeOut }}
             aria-live="polite"
@@ -462,7 +480,7 @@ export default function HowItWorksSection({
                 src={STEPS[activeStep].image}
                 alt={STEPS[activeStep].imageAlt}
                 className="absolute inset-0 size-full object-cover object-center"
-                initial={prefersReducedMotion ? false : { opacity: 0 }}
+                initial={prefersReducedMotion ? undefined : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={prefersReducedMotion ? undefined : { opacity: 0 }}
                 transition={imageFadeTransition}

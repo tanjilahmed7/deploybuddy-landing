@@ -1,17 +1,25 @@
+"use client";
+
 import { useLenis } from "lenis/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import DeployBuddyLandingPage, {
   SiteHeaderBar,
-} from "../imports/DeployBuddyLandingPage/DeployBuddyLandingPage";
-import StickyHeader from "./components/StickyHeader";
-import { useScrollHeaderVisibility } from "./hooks/useScrollHeaderVisibility";
-import { debounce } from "./lib/debounce";
+} from "@/imports/DeployBuddyLandingPage/DeployBuddyLandingPage";
+import StickyHeader from "@/components/StickyHeader";
+import { useScrollHeaderVisibility } from "@/hooks/useScrollHeaderVisibility";
+import { debounce } from "@/lib/debounce";
 
 const DESIGN_WIDTH = 1920;
 const HEIGHT_RESIZE_THRESHOLD = 32;
 
-export default function App() {
+export default function HomePage() {
   const contentRef = useRef<HTMLDivElement>(null);
   const lastHeightRef = useRef(0);
   const [scale, setScale] = useState(1);
@@ -29,20 +37,22 @@ export default function App() {
     return () => window.removeEventListener("resize", updateScale);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = contentRef.current;
     if (!element) return;
 
-    const observer = new ResizeObserver(([entry]) => {
-      const height =
-        entry.borderBoxSize?.[0]?.blockSize ?? entry.contentRect.height;
+    const measure = () => {
+      const height = element.offsetHeight;
       if (Math.abs(height - lastHeightRef.current) < HEIGHT_RESIZE_THRESHOLD) {
         return;
       }
       lastHeightRef.current = height;
       setContentHeight(height);
-    });
+    };
 
+    measure();
+
+    const observer = new ResizeObserver(() => requestAnimationFrame(measure));
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
@@ -61,37 +71,28 @@ export default function App() {
   }, [lenis, contentHeight, scale]);
 
   const isScaled = scale < 1;
-  const scaledWidth = DESIGN_WIDTH * scale;
-  const scaledHeight = contentHeight * scale;
 
   return (
     <>
       <StickyHeader visible={headerVisible} scale={scale}>
         <SiteHeaderBar />
       </StickyHeader>
-      <div className="w-full overflow-x-hidden bg-white">
-      <div
-        className="relative mx-auto"
-        style={{
-          width: isScaled ? scaledWidth : "100%",
-          maxWidth: DESIGN_WIDTH,
-          height: isScaled && contentHeight > 0 ? scaledHeight : undefined,
-        }}
-      >
+      <div className="w-full bg-white">
         <div
           ref={contentRef}
-          className={isScaled ? "absolute left-0 top-0" : "mx-auto"}
-          style={{
-            width: DESIGN_WIDTH,
-            transform: isScaled ? `scale(${scale})` : undefined,
-            transformOrigin: "top left",
-            willChange: isScaled ? "transform" : undefined,
-          }}
+          className={`page-canvas${isScaled ? " is-scaled" : ""}`}
+          style={
+            isScaled
+              ? ({
+                  "--page-scale": scale,
+                  "--page-scale-collapse": `${-contentHeight * (1 - scale)}px`,
+                } as CSSProperties)
+              : undefined
+          }
         >
           <DeployBuddyLandingPage />
         </div>
       </div>
-    </div>
     </>
   );
-}
+};

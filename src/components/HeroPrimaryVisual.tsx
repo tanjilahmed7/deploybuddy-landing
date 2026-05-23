@@ -1,8 +1,9 @@
-import svgPaths from "../../imports/DeployBuddyLandingPage/svg-ozithytiez";
-import imgContainer from "../../imports/DeployBuddyLandingPage/2d96400713b1b700962e59b6020c5f67f86f368f.png";
-import imgManWithCoffee from "../../imports/DeployBuddyLandingPage/245a256ea6c2500723990a3baf4223943479fcc1.png";
+import svgPaths from "../imports/DeployBuddyLandingPage/svg-ozithytiez";
+import imgContainer from "../imports/DeployBuddyLandingPage/2d96400713b1b700962e59b6020c5f67f86f368f.png";
+import imgManWithCoffee from "../imports/DeployBuddyLandingPage/245a256ea6c2500723990a3baf4223943479fcc1.png";
 import HeroAnimatedTerminal from "./HeroAnimatedTerminal";
 import HeroThemeExplorer from "./HeroThemeExplorer";
+import { imgSrc } from "@/lib/img-src";
 
 function Container2() {
   return <div className="absolute h-[445px] left-[-49px] rounded-[24px] top-[593px] w-[609.555px]" style={{ backgroundImage: "linear-gradient(143.869deg, rgba(221, 214, 254, 0.6) 0%, rgba(199, 210, 254, 0.4) 50%, rgba(0, 0, 0, 0) 100%)" }} data-name="Container" />;
@@ -271,7 +272,7 @@ function Container1() {
 function Container() {
   return (
     <div className="h-[560px] overflow-clip relative rounded-[16px] shrink-0 w-[953px]" data-name="Container">
-      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[16px] size-full" src={imgContainer} />
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[16px] size-full" src={imgSrc(imgContainer)} />
       <Container1 />
     </div>
   );
@@ -280,7 +281,7 @@ function Container() {
 function ManWithCoffee() {
   return (
     <div className="h-[560px] relative rounded-[16px] shrink-0 w-[469px]" data-name="Man with Coffee">
-      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[16px] size-full" src={imgManWithCoffee} />
+      <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[16px] size-full" src={imgSrc(imgManWithCoffee)} />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import { ReactLenis } from "lenis/react";
 import { useGsapLenis } from "../hooks/useGsapLenis";

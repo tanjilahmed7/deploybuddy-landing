@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
 
-import imgImage3 from "../../imports/DeployBuddyLandingPage/313f5bd7015154f27e139a57456f469aa33c6c91.png";
-import imgImage33 from "../../imports/DeployBuddyLandingPage/2916c962228e4aaf7cd0c6ba3b62875f14bd4e0a.png";
+import imgImage3 from "../imports/DeployBuddyLandingPage/313f5bd7015154f27e139a57456f469aa33c6c91.png";
+import imgImage33 from "../imports/DeployBuddyLandingPage/2916c962228e4aaf7cd0c6ba3b62875f14bd4e0a.png";
 import ScrollRevealHeading from "./ScrollRevealHeading";
 import BlurRevealText from "./BlurRevealText";
+import { imgSrc } from "@/lib/img-src";
 
 const AUTOPLAY_MS = 4500;
 const easeOut = [0.22, 1, 0.36, 1] as const;
@@ -91,11 +92,11 @@ export default function TeamCarouselSection() {
   useEffect(() => {
     const next = SLIDES[(activeIndex + 1) % TOTAL];
     const img = new Image();
-    const src =
+    const raw =
       typeof next.panelImage === "string" && next.panelImage.startsWith("http")
         ? `${next.panelImage}&w=2860&h=1566&fit=crop`
-        : next.panelImage;
-    img.src = src;
+        : imgSrc(next.panelImage);
+    img.src = raw;
   }, [activeIndex]);
 
   return (
@@ -117,7 +118,7 @@ export default function TeamCarouselSection() {
         <img
           alt=""
           className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-          src={imgImage3}
+          src={imgSrc(imgImage3)}
         />
         <div
           className="absolute h-[783px] left-[961px] overflow-hidden rounded-tl-[16px] top-[188px] w-[1430px]"
@@ -133,7 +134,7 @@ export default function TeamCarouselSection() {
                 typeof slide.panelImage === "string" &&
                 slide.panelImage.startsWith("http")
                   ? `${slide.panelImage}&w=2860&h=1566&fit=crop`
-                  : slide.panelImage
+                  : imgSrc(slide.panelImage)
               }
               {...imageMotion(prefersReducedMotion)}
             />
@@ -163,9 +164,9 @@ export default function TeamCarouselSection() {
               <motion.p
                 key={activeIndex}
                 className="text-h2 [word-break:break-word] flex-[1_0_0] min-w-px relative text-white"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={prefersReducedMotion ? false : { opacity: 0, y: -12 }}
+                exit={prefersReducedMotion ? undefined : { opacity: 0, y: -12 }}
                 transition={{ duration: 0.4, ease: easeOut }}
               >
                 {slide.heading}
@@ -188,9 +189,9 @@ export default function TeamCarouselSection() {
               <motion.p
                 key={activeIndex}
                 className="text-title-2 [word-break:break-word] min-w-full relative shrink-0 text-white w-[min-content]"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+                initial={prefersReducedMotion ? undefined : { opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={prefersReducedMotion ? false : { opacity: 0, y: -8 }}
+                exit={prefersReducedMotion ? undefined : { opacity: 0, y: -8 }}
                 transition={{ duration: 0.4, delay: 0.05, ease: easeOut }}
               >
                 {slide.description}

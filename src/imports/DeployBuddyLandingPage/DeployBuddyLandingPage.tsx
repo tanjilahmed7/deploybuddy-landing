@@ -1,19 +1,23 @@
-import FeaturesSliderSection from "../../app/components/FeaturesSliderSection";
-import FooterLink from "../../app/components/FooterLink";
-import HeroPrimaryVisual from "../../app/components/HeroPrimaryVisual";
-import HowItWorksSection from "../../app/components/HowItWorksSection";
-import SafetyCarouselSection from "../../app/components/SafetyCarouselSection";
-import TeamCarouselSection from "../../app/components/TeamCarouselSection";
-import TeamsPinSection from "../../app/components/TeamsPinSection";
-import { FIGMA_HEADLINES } from "../../app/lib/figma-headlines";
-import ScrollRevealHeading from "../../app/components/ScrollRevealHeading";
-import BlurRevealText from "../../app/components/BlurRevealText";
-import HeroSplitTitle from "../../app/components/HeroSplitTitle";
-import NewsletterSignup from "../../app/components/NewsletterSignup";
-import NavPullLink from "../../app/components/NavPullLink";
-import NavCTAButton from "../../app/components/NavCTAButton";
-import { NAV_LINKS, NAV_LOGIN_HREF, NAV_CTA_HREF } from "../../app/lib/nav-links";
-import { FOOTER_LINKS } from "../../app/lib/footer-links";
+import FeaturesSliderSection from "@/components/FeaturesSliderSection";
+import FooterLink from "@/components/FooterLink";
+import HeroPrimaryVisual from "@/components/HeroPrimaryVisual";
+import HowItWorksSection from "@/components/HowItWorksSection";
+import SafetyCarouselSection from "@/components/SafetyCarouselSection";
+import TeamCarouselSection from "@/components/TeamCarouselSection";
+import TeamsPinSection from "@/components/TeamsPinSection";
+import { FIGMA_HEADLINES } from "@/lib/figma-headlines";
+import ScrollRevealHeading from "@/components/ScrollRevealHeading";
+import BlurRevealText from "@/components/BlurRevealText";
+import HeroSplitTitle from "@/components/HeroSplitTitle";
+import NewsletterSignup from "@/components/NewsletterSignup";
+import NavPullLink from "@/components/NavPullLink";
+import NavCTAButton from "@/components/NavCTAButton";
+import { NAV_LINKS, NAV_LOGIN_HREF, NAV_CTA_HREF } from "@/lib/nav-links";
+import { FOOTER_LINKS } from "@/lib/footer-links";
+import {
+  FOOTER_BOTTOM_GRADIENT_CLASS,
+  FOOTER_SECTION_GRADIENT_CLASS,
+} from "@/lib/section-backgrounds";
 import imgFrame2147224507 from "./090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
 import imgRectangle875 from "./0d9c525082c6e2d775f7cfb1534692c856e62eb2.png";
 import imgFrame2147224494 from "./15ff6861b79dbb0a7f8adf81586094abed9edf51.png";
@@ -44,7 +48,8 @@ import imgFooterIcon02 from "./footer-icon-02.svg";
 import imgFooterIcon03 from "./footer-icon-03.svg";
 import svgPaths from "./svg-ozithytiez";
 import { motion } from "motion/react";
-import { fadeUp, scaleIn, stagger, VIEWPORT_ONCE } from "../../app/lib/motion";
+import { fadeUp, scaleIn, stagger, VIEWPORT_ONCE } from "@/lib/motion";
+import { imgSrc } from "@/lib/img-src";
 
 function Frame() {
   return (
@@ -1293,7 +1298,7 @@ function Frame98() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-        src={imgFrame2147224506}
+        src={imgSrc(imgFrame2147224506)}
       />
     </div>
   );
@@ -1327,7 +1332,7 @@ function Frame99() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full"
-        src={imgFrame2147224507}
+        src={imgSrc(imgFrame2147224507)}
       />
     </div>
   );
@@ -1361,7 +1366,7 @@ function Frame100() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full"
-        src={imgFrame2147224508}
+        src={imgSrc(imgFrame2147224508)}
       />
     </div>
   );
@@ -1395,7 +1400,7 @@ function Frame101() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full"
-        src={imgFrame2147224509}
+        src={imgSrc(imgFrame2147224509)}
       />
     </div>
   );
@@ -1429,7 +1434,7 @@ function Frame102() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-        src={imgFrame2147224506}
+        src={imgSrc(imgFrame2147224506)}
       />
     </div>
   );
@@ -1475,7 +1480,7 @@ function Frame104() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-        src={imgFrame2147224510}
+        src={imgSrc(imgFrame2147224510)}
       />
     </div>
   );
@@ -1532,7 +1537,7 @@ function Frame106() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full"
-        src={imgFrame2147224511}
+        src={imgSrc(imgFrame2147224511)}
       />
     </div>
   );
@@ -1567,7 +1572,7 @@ function Frame108() {
         <img
           alt=""
           className="absolute h-full left-[-33.12%] max-w-none top-0 w-[138.15%]"
-          src={imgFrame2147224512}
+          src={imgSrc(imgFrame2147224512)}
         />
       </div>
     </div>
@@ -1600,7 +1605,7 @@ function Frame110() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-        src={imgFrame2147224513}
+        src={imgSrc(imgFrame2147224513)}
       />
     </div>
   );
@@ -1734,7 +1739,7 @@ function Frame45() {
         <img
           alt=""
           className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-          src={imgRectangle872}
+          src={imgSrc(imgRectangle872)}
         />
       </div>
     </div>
@@ -1824,7 +1829,7 @@ function Frame53() {
           <img
             alt=""
             className="absolute h-[150.02%] left-0 max-w-none top-[0.06%] w-full"
-            src={imgRectangle873}
+            src={imgSrc(imgRectangle873)}
           />
         </div>
       </div>
@@ -1882,22 +1887,22 @@ function Frame50() {
           <img
             alt=""
             className="absolute max-w-none object-cover size-full"
-            src={imgRectangle874}
+            src={imgSrc(imgRectangle874)}
           />
           <img
             alt=""
             className="absolute max-w-none object-cover size-full"
-            src={imgRectangle875}
+            src={imgSrc(imgRectangle875)}
           />
           <img
             alt=""
             className="absolute max-w-none object-cover size-full"
-            src={imgRectangle876}
+            src={imgSrc(imgRectangle876)}
           />
           <img
             alt=""
             className="absolute max-w-none object-cover size-full"
-            src={imgRectangle877}
+            src={imgSrc(imgRectangle877)}
           />
         </div>
       </div>
@@ -2403,7 +2408,7 @@ function Image() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full"
-        src={imgImage}
+        src={imgSrc(imgImage)}
       />
       <Container38 />
     </div>
@@ -2902,7 +2907,7 @@ function Image1() {
         <img
           alt=""
           className="absolute h-[99.97%] left-[-2.3%] max-w-none top-[0.01%] w-[102%]"
-          src={imgImage1}
+          src={imgSrc(imgImage1)}
         />
       </div>
       <Container56 />
@@ -3010,7 +3015,7 @@ function Image2() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[8px] size-full"
-        src={imgImage2}
+        src={imgSrc(imgImage2)}
       />
     </div>
   );
@@ -3351,7 +3356,7 @@ function Video1() {
         <img
           alt=""
           className="absolute h-[99.97%] left-[-3.4%] max-w-none top-[0.01%] w-[103.37%]"
-          src={imgVideo}
+          src={imgSrc(imgVideo)}
         />
       </div>
       <Container75 />
@@ -5614,7 +5619,7 @@ function Image3() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-        src={imgImage3}
+        src={imgSrc(imgImage3)}
       />
       <div
         className="absolute h-[783px] left-[961px] rounded-tl-[16px] top-[188px] w-[1430px]"
@@ -5623,7 +5628,7 @@ function Image3() {
         <img
           alt=""
           className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-tl-[16px] size-full"
-          src={imgImage33}
+          src={imgSrc(imgImage33)}
         />
       </div>
     </div>
@@ -5771,7 +5776,7 @@ function Frame7() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[16px] size-full"
-        src={imgFrame26}
+        src={imgSrc(imgFrame26)}
       />
     </div>
   );
@@ -5806,7 +5811,7 @@ function Frame9() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[16px] size-full"
-        src={imgFrame27}
+        src={imgSrc(imgFrame27)}
       />
     </div>
   );
@@ -5875,7 +5880,7 @@ function Frame10() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none rounded-[16px] size-full"
-        src={imgFrame28}
+        src={imgSrc(imgFrame28)}
       />
     </div>
   );
@@ -6012,7 +6017,7 @@ function Frame118() {
       <img
         alt=""
         className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
-        src={imgFrame2147224494}
+        src={imgSrc(imgFrame2147224494)}
       />
       <Frame119 />
     </div>
@@ -6257,14 +6262,14 @@ function Frame122() {
 function DeployBuddy1() {
   return (
     <div
-      className="relative mx-auto mb-[-187.82px] h-[187.82px] w-full max-w-[1440px] shrink-0"
+      className="pointer-events-none absolute inset-x-0 top-0 z-10 mx-auto h-[187.82px] w-full max-w-[1440px]"
       data-name="DeployBuddy"
       data-node-id="76:1007"
     >
       <img
         alt=""
         className="absolute inset-0 block size-full max-w-none"
-        src={imgDeployBuddyFooter}
+        src={imgSrc(imgDeployBuddyFooter)}
       />
     </div>
   );
@@ -6280,7 +6285,7 @@ function Frame148() {
         <img
           alt=""
           className="absolute inset-0 block size-full max-w-none"
-          src={imgFooterIcon01}
+          src={imgSrc(imgFooterIcon01)}
         />
       </div>
       <div
@@ -6290,7 +6295,7 @@ function Frame148() {
         <img
           alt=""
           className="absolute inset-0 block size-full max-w-none"
-          src={imgFooterIcon02}
+          src={imgSrc(imgFooterIcon02)}
         />
       </div>
       <div
@@ -6300,7 +6305,7 @@ function Frame148() {
         <img
           alt=""
           className="absolute inset-0 block size-full max-w-none"
-          src={imgFooterIcon03}
+          src={imgSrc(imgFooterIcon03)}
         />
       </div>
     </div>
@@ -6385,17 +6390,17 @@ function Frame146() {
 function Frame121Bottom() {
   return (
     <div
-      className="flex w-full shrink-0 flex-col items-center"
+      className="relative flex w-full shrink-0 flex-col items-center"
       data-node-id="76:1006"
     >
-      <DeployBuddy1 />
       <div
-        className="flex h-[446px] w-full shrink-0 flex-col items-start bg-gradient-to-b from-[rgba(0,11,71,0)] to-[#00152a] pt-[295px]"
+        className={`flex h-[446px] w-full shrink-0 flex-col items-start ${FOOTER_BOTTOM_GRADIENT_CLASS} pt-[295px]`}
         data-name="Frame 2147224545"
         data-node-id="76:1019"
       >
         <Frame146 />
       </div>
+      <DeployBuddy1 />
     </div>
   );
 }
@@ -6416,7 +6421,7 @@ function Frame121() {
 function Footer() {
   return (
     <motion.div
-      className="relative mx-auto h-[1198px] w-full max-w-[1920px] shrink-0 overflow-hidden bg-gradient-to-b from-black to-[#03125d]"
+      className={`relative mx-auto h-[1198px] w-full max-w-[1920px] shrink-0 overflow-hidden ${FOOTER_SECTION_GRADIENT_CLASS}`}
       data-name="Footer"
       data-node-id="76:959"
       variants={fadeUp}

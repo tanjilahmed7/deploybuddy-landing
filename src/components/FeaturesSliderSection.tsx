@@ -1,30 +1,29 @@
-import { useState } from "react";
-
 import { FIGMA_HEADLINES } from "../lib/figma-headlines";
 import ScrollRevealHeading from "./ScrollRevealHeading";
 import BlurRevealText from "./BlurRevealText";
 import { FEATURES_SECTION_GRADIENT_CLASS } from "../lib/section-backgrounds";
-import img506 from "../../imports/DeployBuddyLandingPage/4f388580dbf5cd692c0d00c14113857295288703.png";
-import img507 from "../../imports/DeployBuddyLandingPage/090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
-import img508 from "../../imports/DeployBuddyLandingPage/51bf8bf67797c79c70b89bd52c569905a79aad5e.png";
-import img509 from "../../imports/DeployBuddyLandingPage/21f3d34a2b39c036c28ed17d4fd6964b2ff1029c.png";
-import img510 from "../../imports/DeployBuddyLandingPage/419632b82a28b455006959a8725a4503e2a8fb3e.png";
-import img511 from "../../imports/DeployBuddyLandingPage/2f3278a54a997e013b302b0dfb9b3a58db860746.png";
-import img512 from "../../imports/DeployBuddyLandingPage/1fa030b9415a692c944412d1da678c77ce657f66.png";
-import img513 from "../../imports/DeployBuddyLandingPage/7a3c6579088385839b17ee8e0167d0fe8e0c67dc.png";
+import img506 from "../imports/DeployBuddyLandingPage/4f388580dbf5cd692c0d00c14113857295288703.png";
+import img507 from "../imports/DeployBuddyLandingPage/090c4ef71b7a19d03d97a2700ed0d65c18b358ee.png";
+import img508 from "../imports/DeployBuddyLandingPage/51bf8bf67797c79c70b89bd52c569905a79aad5e.png";
+import img509 from "../imports/DeployBuddyLandingPage/21f3d34a2b39c036c28ed17d4fd6964b2ff1029c.png";
+import img510 from "../imports/DeployBuddyLandingPage/419632b82a28b455006959a8725a4503e2a8fb3e.png";
+import img511 from "../imports/DeployBuddyLandingPage/2f3278a54a997e013b302b0dfb9b3a58db860746.png";
+import img512 from "../imports/DeployBuddyLandingPage/1fa030b9415a692c944412d1da678c77ce657f66.png";
+import img513 from "../imports/DeployBuddyLandingPage/7a3c6579088385839b17ee8e0167d0fe8e0c67dc.png";
+import { imgSrc, type ImageImport } from "@/lib/img-src";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
 type FeatureCard = {
   type: "feature";
-  image: string;
+  image: ImageImport;
   title: string;
   description: string;
 };
 
 type TestimonialCard = {
   type: "testimonial";
-  image: string;
+  image: ImageImport;
   quote: string;
   author: string;
   role: string;
@@ -136,7 +135,7 @@ function SliderCard({
         style={{ width: imgW, height: imgH }}
       >
         <img
-          src={card.image}
+          src={imgSrc(card.image)}
           alt={alt}
           className="size-full object-cover"
           loading="lazy"
@@ -185,7 +184,6 @@ function MarqueeRow({
   floats,
   direction,
   duration,
-  paused,
   imgW,
   imgH,
 }: {
@@ -193,7 +191,6 @@ function MarqueeRow({
   floats: readonly number[];
   direction: "left" | "right";
   duration: number;
-  paused: boolean;
   imgW: number;
   imgH: number;
 }) {
@@ -211,7 +208,6 @@ function MarqueeRow({
           animationDuration: `${duration}s`,
           animationTimingFunction: "linear",
           animationIterationCount: "infinite",
-          animationPlayState: paused ? "paused" : "running",
         }}
       >
         {doubled.map((card, i) => (
@@ -231,16 +227,12 @@ function MarqueeRow({
 // ── FeaturesSliderSection ─────────────────────────────────────────────────────
 
 export default function FeaturesSliderSection() {
-  const [paused, setPaused] = useState(false);
-
   return (
     <section
       id="features"
-      className={`relative ${FEATURES_SECTION_GRADIENT_CLASS} py-[140px] overflow-x-hidden scroll-mt-[78px]`}
+      className={`relative ${FEATURES_SECTION_GRADIENT_CLASS} py-[140px] scroll-mt-[78px]`}
       data-name="Frame 2147224488"
       data-node-id="76:478"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       {/* Left/right edge fade — blends marquee edges into the section bg */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[140px] bg-gradient-to-r from-black to-transparent" />
@@ -265,7 +257,6 @@ export default function FeaturesSliderSection() {
         floats={TOP_FLOATS}
         direction="left"
         duration={32}
-        paused={paused}
         imgW={350}
         imgH={400}
       />
@@ -278,7 +269,6 @@ export default function FeaturesSliderSection() {
         floats={BOTTOM_FLOATS}
         direction="right"
         duration={36}
-        paused={paused}
         imgW={450}
         imgH={350}
       />

@@ -31,8 +31,13 @@ const buildKeyframes = (
   ]);
 
   const keyframes: Record<string, TargetAndTransition[]> = {};
+  const asRecord = (t: TargetAndTransition) =>
+    t as unknown as Record<string, TargetAndTransition>;
   keys.forEach((k) => {
-    keyframes[k] = [from[k], ...steps.map((s) => s[k])];
+    keyframes[k] = [
+      asRecord(from)[k],
+      ...steps.map((s) => asRecord(s)[k]),
+    ];
   });
   return keyframes;
 };
@@ -118,7 +123,9 @@ export default function BlurText({
           <motion.span
             key={`${segment}-${index}`}
             initial={fromSnapshot}
-            animate={inView ? animateKeyframes : fromSnapshot}
+            animate={
+              (inView ? animateKeyframes : fromSnapshot) as TargetAndTransition
+            }
             transition={spanTransition}
             onAnimationComplete={
               index === elements.length - 1 ? onAnimationComplete : undefined

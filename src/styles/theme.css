@@ -210,12 +210,7 @@
   }
 }
 
-/* How-it-works timeline: fill scale driven by JS (--segment progress) */
-.step-connector__fill {
-  transform-origin: top center;
-  background-color: #1447e6;
-}
-
+/* How-it-works timeline: SVG stroke connectors (Figma `76:468`) */
 .step-connector-rail {
   transition: flex-grow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }

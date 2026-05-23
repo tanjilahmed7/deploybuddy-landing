@@ -44,6 +44,32 @@ export const scaleIn: Variants = {
   },
 };
 
+/** Hero visual — 3D tilt-in entrance. */
+export const heroVisualIn: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 48,
+    rotateX: 12,
+    transformPerspective: 1200,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: { duration: 0.85, ease: EASE_OUT },
+  },
+};
+
+/** Hero visual — flat fade when reduced motion is preferred. */
+export const heroVisualInReduced: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: REVEAL_DURATION, ease: EASE_OUT },
+  },
+};
+
 /** Build a transition with a custom delay, reused for one-off reveals. */
 export function revealTransition(delay = 0): Transition {
   return { duration: REVEAL_DURATION, delay, ease: EASE_OUT };
